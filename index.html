@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kavach — Open-Source Scam Message Checker for India</title>
+  <meta name="description" content="Free, privacy-first scam message analyzer for India. Check suspicious SMS, WhatsApp, UPI requests, or links against official RBI, CERT-In, I4C, and DoT rules 100% offline.">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Top Bar with Language Selector & Privacy Pill -->
+    <header class="app-header">
+      <div class="top-bar">
+        <div class="brand-badge">
+          <span>🇮🇳</span>
+          <span>Made for India</span>
+        </div>
+        <div class="lang-switch" role="group" aria-label="Language Selector">
+          <button type="button" class="lang-btn active" id="langEn" data-lang="en">English</button>
+          <button type="button" class="lang-btn" id="langHi" data-lang="hi">हिंदी</button>
+          <button type="button" class="lang-btn" id="langTa" data-lang="ta">தமிழ்</button>
+        </div>
+      </div>
+
+      <img src="icons/icon.svg" alt="Kavach Shield Logo" class="hero-icon" id="heroLogo">
+      <h1 class="hero-title" id="appTitle">Kavach</h1>
+      <p class="hero-subtitle" id="appTagline">Open-Source Scam Message Checker for India</p>
+
+      <div class="privacy-banner" id="privacyBadge">
+        <span>🔒</span>
+        <span>100% Client-Side • Zero Data Leaves Your Device • Works Offline</span>
+      </div>
+    </header>
+
+    <!-- Main Checker Form -->
+    <main>
+      <section class="card" aria-labelledby="inputSectionTitle">
+        <h2 id="inputSectionTitle" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">Scam Message Checker Input</h2>
+        <div class="textarea-wrapper">
+          <textarea 
+            id="messageInput" 
+            placeholder="Paste suspicious SMS, WhatsApp text, email, UPI request, or link here..."
+            aria-label="Suspicious message input"
+            rows="5"
+          ></textarea>
+        </div>
+
+        <div class="toolbar">
+          <button type="button" class="btn btn-primary" id="analyzeBtn">
+            <span>🛡️</span>
+            <span id="btnAnalyzeText">Analyze Message</span>
+          </button>
+          <button type="button" class="btn btn-secondary" id="pasteBtn">
+            <span>📋</span>
+            <span id="btnPasteText">Paste</span>
+          </button>
+          <button type="button" class="btn btn-ghost" id="clearBtn">
+            <span>✖</span>
+            <span id="btnClearText">Clear</span>
+          </button>
+        </div>
+
+        <!-- Real-world Quick Samples -->
+        <div class="samples-section">
+          <div class="samples-label" id="samplesTitle">Try a Real-World Sample:</div>
+          <div class="samples-grid">
+            <button type="button" class="sample-chip" id="sampleElec">⚡ Electricity Disconnection</button>
+            <button type="button" class="sample-chip" id="sampleArrest">👮 Digital Arrest / Courier</button>
+            <button type="button" class="sample-chip" id="sampleKyc">🏦 Fake Bank KYC Block</button>
+            <button type="button" class="sample-chip" id="sampleUpi">💳 UPI PIN To Receive</button>
+            <button type="button" class="sample-chip" id="sampleJob">💼 YouTube / Map Task Job</button>
+            <button type="button" class="sample-chip" id="sampleLegit">🛡️ Real Bank OTP</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results Section (Visible after analysis) -->
+      <section class="card verdict-card" id="resultsCard" aria-live="polite">
+        <!-- Verdict Banner -->
+        <div class="verdict-header" id="verdictHeader">
+          <div class="verdict-main">
+            <div class="verdict-icon" id="verdictIcon">🛡️</div>
+            <div>
+              <div class="verdict-badge" id="verdictText">Analysis Verdict</div>
+              <p class="verdict-desc" id="verdictDesc">Evaluating message contents against security advisories...</p>
+            </div>
+          </div>
+          <div class="score-meter">
+            <div class="score-num" id="scoreValue">0</div>
+            <div class="score-lbl" id="scoreLabel">Risk Score</div>
+          </div>
+        </div>
+
+        <!-- Highlighted Text Preview -->
+        <div class="highlight-wrapper" id="highlightSection" style="display: none;">
+          <h3 class="section-title" id="highlightTitle">
+            <span>🔍</span>
+            <span>Highlighted Suspicious Signs</span>
+          </h3>
+          <div class="highlight-box" id="highlightPreview"></div>
+        </div>
+
+        <!-- Detected Reasons / Indicators -->
+        <div class="indicators-section" id="findingsSection" style="display: none;">
+          <h3 class="section-title" id="indicatorsTitle">
+            <span>⚠️</span>
+            <span>Detected Indicators & Explanations</span>
+          </h3>
+          <div id="findingsList"></div>
+        </div>
+
+        <!-- Recommended Actions -->
+        <div class="actions-section">
+          <h3 class="section-title" id="actionsTitle">
+            <span>📋</span>
+            <span>Recommended Next Steps</span>
+          </h3>
+          <ul class="actions-list" id="actionsList"></ul>
+        </div>
+
+        <!-- Emergency Helplines -->
+        <div class="emergency-section">
+          <h3 class="section-title" id="emergencyTitle">
+            <span>🚨</span>
+            <span>Emergency Helplines & Official Portals</span>
+          </h3>
+          <div class="emergency-grid" id="emergencyGrid"></div>
+        </div>
+
+        <!-- Action toolbar for result -->
+        <div class="toolbar" style="margin-top: 1.5rem; justify-content: flex-end;">
+          <button type="button" class="btn btn-secondary" id="copyReportBtn">
+            <span>📄</span>
+            <span id="btnCopyReportText">Copy Report</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer & Disclaimer -->
+    <footer>
+      <p class="disclaimer" id="disclaimerText">
+        Disclaimer: Kavach analyzes messages strictly on your device using heuristics published by RBI, CERT-In, I4C, NPCI, and DoT. It is an informational tool and does not constitute legal certification.
+      </p>
+    </footer>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

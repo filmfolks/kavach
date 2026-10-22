@@ -1,0 +1,348 @@
+{
+  "version": "1.0.0",
+  "description": "Kavach Open-Source Scam Pattern Rules for India",
+  "last_updated": "2026-10-22",
+  "verdict_thresholds": {
+    "scam": 40,
+    "suspicious": 15
+  },
+  "rules": [
+    {
+      "id": "kyc_account_blocked_threat",
+      "family": "fake_kyc_account_blocked",
+      "name": "Fake KYC / Account Blocked Alert",
+      "severity": "critical",
+      "weight": 55,
+      "languages": ["en", "hi", "hi-Latn", "ta", "ta-Latn"],
+      "patterns": [
+        "(?:account|a\\/c|khata|kanakku|netbanking|yono|debit card|credit card|sim)\\s+(?:has been|is|will be)?\\s*(?:blocked|suspended|frozen|deactivated|put on hold)",
+        "(?:blocked|suspended|deactivated|band|freeze).*?(?:pending kyc|update pan|link aadhaar|kyc verification|submit documents)",
+        "(?:pending kyc|kyc verification).*?(?:blocked|suspended|deactivated|band|freeze)",
+        "(?:update|complete|verify)\\s+(?:your\\s+)?(?:kyc|pan card|pan|aadhaar)\\s+(?:immediately|urgently|within \\d+ hours?|today|to avoid)",
+        "(?:aapka|apka)\\s+(?:sbi|hdfc|icici|pnb|bank|yono)?\\s*(?:khata|account)\\s+(?:band|block|suspend)\\s+(?:kar diya|ho gaya|hoga)",
+        "(?:turant|jaldi)\\s+(?:kyc|pan card|pan)\\s+(?:update|link)\\s+kare[n]?",
+        "(?:खाता|बैंक खाता|योनो खाता).*?(?:बंद|ब्लॉक|फ्रीज|निलंबित).*?(?:कर दिया|हो जाएगा|हो गया)",
+        "(?:केवाईसी|पैन|आधार).*?(?:बंद|ब्लॉक|फ्रीज)",
+        "(?:तुरंत|आज ही).*?(?:केवाईसी|पैन कार्ड|आधार).*?(?:अपडेट|लिंक).*?(?:करें|किये)",
+        "(?:வங்கி கணக்கு|எஸ்பிஐ கணக்கு).*?(?:முடக்கப்பட்டுள்ளது|பிளாக் செய்யப்பட்டுள்ளது|தடை செய்யப்படும்)",
+        "(?:கேஒய்சி|பான் கார்டு|ஆதார்).*?(?:முடக்கப்பட்டுள்ளது|பிளாக்)",
+        "(?:உடனடியாக|உடனே).*?(?:கேஒய்சி|பான் கார்டு|ஆதார்).*?(?:அப்டேட்|இணைக்க|புதுப்பிக்க)",
+        "(?:ungal\\s+)?(?:vangi\\s+)?kanakku\\s+(?:block|mudakkappattu|thundu)\\s+(?:seiyappattullathu|aagi vittadhu)",
+        "(?:udane|udanadiyaga)\\s+kyc\\s+(?:update|puduppikka)\\s+seiyavum"
+      ],
+      "explanation": "Scammers falsely claim your bank account, card, or YONO app is blocked due to missing KYC or PAN details to induce panic.",
+      "advice": "Banks NEVER ask you to update KYC or PAN via SMS links or calls. Visit your home bank branch or use the official mobile banking app directly.",
+      "source": "RBI BE(A)WARE booklet (Part A: Phishing Links & Vishing Calls)"
+    },
+    {
+      "id": "electricity_bill_disconnection_threat",
+      "family": "electricity_bill_disconnection",
+      "name": "Electricity Bill Disconnection Threat",
+      "severity": "critical",
+      "weight": 55,
+      "languages": ["en", "hi", "hi-Latn", "ta", "ta-Latn"],
+      "patterns": [
+        "(?:electricity|power|power supply)\\s+(?:will be|to be)\\s+disconnected\\s+(?:tonight|today|by|at)\\s*(?:\\d{1,2}[:.]\\d{2}\\s*(?:pm|am|hours?)?)?",
+        "(?:previous|last)\\s+month\\s+(?:electricity\\s+)?bill\\s+(?:was\\s+)?not\\s+updated",
+        "(?:contact|call|immediately call)\\s+(?:our\\s+)?(?:electricity officer|officer|power dept).*?\\d{10}",
+        "(?:bijli|electricity)\\s+(?:aaj raat|tonight|9[:.]30|raat)\\s+(?:kaat|kat|band)\\s+(?:di jayegi|jayegi|hogi)",
+        "(?:pichhle|pichle)\\s+mahine\\s+ka\\s+bill\\s+update\\s+nahi\\s+hua",
+        "(?:turant|jaldi)\\s+(?:electricity|bijli)\\s+officer\\s+se\\s+(?:sampark|baat)\\s+kare",
+        "बिजली\\s+(?:काट|बंद)\\s+(?:दी जाएगी|हो जाएगी|कर दी जाएगी).*?(?:आज रात|अपडेट नहीं)",
+        "पिछले\\s+(?:महीने|माह)\\s+का\\s+बिजली\\s+बिल\\s+अपडेट\\s+नहीं\\s+हुआ",
+        "तुरंत\\s+बिजली\\s+अधिकारी\\s+(?:से संपर्क करें|को फोन करें)",
+        "(?:மின்சாரக் கட்டணம்|மின் இணைப்பு).*?(?:துண்டிக்கப்படும்|இன்று இரவு|அப்டேட் செய்யப்படவில்லை)",
+        "(?:முந்தைய மாத|கடந்த மாத).*?மின்சாரக் கட்டணம்.*?அப்டேட்",
+        "உடனே\\s+மின்சார\\s+அதிகாரியை.*?தொடர்பு\\s*கொள்ளவும்",
+        "(?:inru\\s+iravu|aaj\\s+raat).*?min\\s*inaippu\\s*thundikkappadum",
+        "minsara\\s*kattanam\\s+(?:update\\s*aagavillai|kattavillai)"
+      ],
+      "explanation": "Viral scam claiming your home electricity will be disconnected tonight because of an un-updated bill, urging you to call an unofficial personal mobile number.",
+      "advice": "Electricity discoms never send sudden disconnection threats via personal SMS or provide individual mobile numbers. Check pending bills only on your discom's official website or official consumer app.",
+      "source": "PIB Fact Check & DoT Sanchar Saathi (Chakshu Electricity Scam Advisories)"
+    },
+    {
+      "id": "digital_arrest_courier_drugs",
+      "family": "courier_drugs_digital_arrest",
+      "name": "FedEx / Courier Drug Parcel & Digital Arrest Scam",
+      "severity": "critical",
+      "weight": 60,
+      "languages": ["en", "hi", "hi-Latn", "ta", "ta-Latn"],
+      "patterns": [
+        "(?:fedex|dhl|customs|courier|parcel).*?(?:mdma|drugs|narcotics|contraband|fake passports?|illegal substances?)",
+        "(?:mdma|drugs|narcotics).*?(?:fedex|dhl|customs|courier|parcel)",
+        "(?:parcel|package).*?(?:intercepted|detained|seized).*?(?:customs|mumbai airport|delhi airport)",
+        "(?:digital arrest|skype video|video call).*?(?:cbi|crime branch|ncb|police|narcotics)",
+        "(?:stay on|do not disconnect|must remain on).*?(?:video call|skype|whatsapp call)",
+        "(?:arrest warrant|digital arrest warrant).*?(?:cbi|ed|customs|cyber crime|mumbai police|delhi police)",
+        "(?:aapke\\s+)?(?:parcel|courier)\\s+me[n]?\\s+(?:drugs|mdma|narcotics|fake passport)\\s+(?:pakda|mila)",
+        "(?:digital arrest|skype call).*?(?:cbi|police|customs)",
+        "(?:पार्सल|कूरियर).*?(?:ड्रग्स|नशीली दवाएं|जाली पासपोर्ट|एमडीएमए|कस्टम)",
+        "(?:डिजिटल अरेस्ट|स्काइप कॉल|वीडियो कॉल).*?(?:सीबीआई|पुलिस|वारंट)",
+        "(?:கூரியர் பார்சல்|பார்சலில்).*?(?:போதைப்பொருள்|போலி பாஸ்போர்ட்|சுங்கத்துறை|சிபிஐ)",
+        "(?:டிஜிட்டல் கைது|வீடியோ காலில் இணையவும்|வீடியோ அழைப்பு)",
+        "parcelil\\s+(?:drugs|narcotics).*?(?:cbi|police|customs)",
+        "digital\\s+arrest\\s+(?:seiyappadum|warrant|pannuvom)"
+      ],
+      "explanation": "Criminals pose as FedEx, Customs, Police, or CBI officials claiming a parcel in your name contains narcotics, then place you under an illegal 'digital arrest' over video call to extort money.",
+      "advice": "There is NO provision for 'digital arrest' under Indian law. Real law enforcement agencies never interrogate citizens, demand money, or serve warrants over Skype or WhatsApp. Hang up and report immediately to 1930.",
+      "source": "MHA Indian Cyber Crime Coordination Centre (I4C) & PIB Digital Arrest Advisory"
+    },
+    {
+      "id": "upi_collect_pin_to_receive",
+      "family": "upi_collect_request",
+      "name": "UPI PIN Requested to Receive Money / Collect Request",
+      "severity": "critical",
+      "weight": 60,
+      "languages": ["en", "hi", "hi-Latn", "ta", "ta-Latn"],
+      "patterns": [
+        "(?:enter|type|input|enter your).*?(?:upi\\s+)?pin.*?(?:receive|claim|accept|get|credit)\\s+(?:money|cashback|prize|reward|refund|the credit|in your account)",
+        "(?:accept|approve).*?(?:collect\\s+request|pull\\s+request)",
+        "(?:receive|claim|get)\\s+(?:rs\\.?|inr|₹)\\s*[\\d,]+.*?(?:upi\\s+)?pin",
+        "(?:upi\\s+pin|mpin).*?(?:dale[n]?|enter kare[n]?|daal|likhe).*?(?:paise|cashback|account)",
+        "(?:paise\\s+paane|paise\\s+lene|account me paise).*?(?:upi\\s+pin|pin)",
+        "(?:पैसे पाने|कैशबैक लेने|रिफंड पाने|खाते में).*?(?:यूपीआई पिन|पिन)",
+        "(?:कलेक्ट रिक्वेस्ट|collect request).*?(?:स्वीकार|accept|approve)",
+        "(?:பணம்|பணத்தை|கேஷ்பேக்|பரிசு).*?(?:பெற|வர|கணக்கில்).*?(?:upi\\s*pin|யுபிஐ பின்)",
+        "(?:upi\\s*pin|யுபிஐ பின்).*?(?:உள்ளிடவும்|போடவும்|பதிவிடவும்)",
+        "(?:panam|cashback).*?(?:vara|pera).*?upi\\s*pin",
+        "upi\\s*pin\\s+(?:podavum|enter\\s+seiyavum)",
+        "collect\\s+request.*?accept"
+      ],
+      "explanation": "Tricks you into believing entering your UPI PIN will deposit money into your account. In reality, a UPI PIN only AUTHORIZES OUTGOING PAYMENTS.",
+      "advice": "YOU NEVER ENTER A UPI PIN TO RECEIVE MONEY. UPI PIN is exclusively used for sending money (debit). If anyone asks for your PIN to send you money or a refund, it is 100% a scam.",
+      "source": "NPCI UPI Safety Guidelines & RBI BE(A)WARE booklet (Part A: Online Selling Platforms & UPI)"
+    },
+    {
+      "id": "fake_task_job_scam",
+      "family": "fake_task_job_scam",
+      "name": "Task-Based / Like & Review Job Scam",
+      "severity": "high",
+      "weight": 50,
+      "languages": ["en", "hi", "hi-Latn", "ta", "ta-Latn"],
+      "patterns": [
+        "(?:work from home|part time job|online task).*?(?:earn|daily).*?(?:rs\\.?|inr|₹)?\\s*[\\d,]+.*?(?:daily|per day|day)",
+        "(?:liking|like|subscribe|subscribing|rate|rating).*?(?:youtube|google maps|hotels|videos).*?(?:earn|salary|daily|telegram)",
+        "(?:part[- ]time|work from home).*?(?:tasks?|like videos?).*?(?:telegram|whatsapp)",
+        "(?:ghar baithe|part time job).*?(?:daily|roz|rozana)\\s*(?:rs\\.?|inr|₹)?\\s*[\\d,]+.*?(?:kamaye|earn)",
+        "(?:youtube video like|hotel rating|map review).*?(?:karke|karo).*?(?:paise kamaye|telegram)",
+        "(?:घर बैठे|पार्ट टाइम जॉब).*?(?:रोजाना|प्रतिदिन).*?(?:कमाएं|रुपये).*?(?:यूट्यूब|लाइक|टेलीग्राम)",
+        "(?:यूट्यूब वीडियो लाइक|होटल रिव्यू).*?(?:करके पैसे कमाएं|टेलीग्राम जॉइन)",
+        "(?:வீட்டிலிருந்தே வேலை|பகுதி நேர வேலை).*?(?:தினமும்|ரூபாய்).*?(?:சம்பாதிக்கலாம்|வருமானம்)",
+        "(?:யூடியூப் வீடியோ லைக்|கூகுள் மேப் ரேட்டிங்).*?(?:செய்து சம்பாதிக்க|டெலிகிராம்)",
+        "(?:veetilirundhe\\s+velai|part\\s+time\\s+job).*?(?:dhinam|daily).*?sambadhikalam",
+        "youtube\\s+video\\s+like\\s+panna\\s+podhum"
+      ],
+      "explanation": "Offers unrealistic daily income (₹2,000–₹5,000/day) for trivial tasks like liking YouTube videos or writing Google Maps reviews, leading to fake prepaid investment traps.",
+      "advice": "Legitimate companies do not pay high daily sums for liking videos or require you to join Telegram groups. Never pay 'deposit fees' or 'VIP upgrade charges' to unlock earned money.",
+      "source": "PIB & I4C Advisory on Part-Time Telegram Task Scams"
+    },
+    {
+      "id": "lottery_prize_kbc_scam",
+      "family": "lottery_prize_scam",
+      "name": "KBC / Lucky Draw / Lottery Winner Scam",
+      "severity": "high",
+      "weight": 50,
+      "languages": ["en", "hi", "hi-Latn", "ta", "ta-Latn"],
+      "patterns": [
+        "(?:congratulations|lucky winner|selected).*?(?:won|win).*?(?:lottery|kbc|kaun banega crorepati|lucky draw|jackpot).*?(?:25\\s*(?:lakh|lac|,00,000)|car|cash prize)",
+        "(?:kbc|jio|whatsapp)\\s+(?:lucky draw|lottery|head office).*?(?:prize|won|winner)",
+        "(?:processing fee|registration fee|gst fee|transfer charge).*?(?:to claim|claim your prize|release lottery)",
+        "(?:badhai ho|congratulations).*?(?:kbc|lottery|lucky draw).*?(?:25 lakh|jeeta hai|vijeta)",
+        "(?:lottery manager|rana pratap singh|whatsapp manager).*?\\+?\\d{10,12}",
+        "(?:बधाई हो|शुभकामनाएं).*?(?:केबीसी|लकी ड्रॉ|लॉटरी|kbc).*?(?:25 लाख|कार|जीते हैं)",
+        "(?:लॉटरी मैनेजर|प्रोसेसिंग फीस|रजिस्ट्रेशन शुल्क).*?(?:जमा करें|व्हाट्सएप)",
+        "(?:வாழ்த்துக்கள்|அதிர்ஷ்டக் குலுக்கல்).*?(?:கேபிசி|kbc|லாட்டரி).*?(?:25 லட்சம்|பரிசு|வென்று)",
+        "(?:செயலாக்கக் கட்டணம்|பதிவுக் கட்டணம்).*?(?:செலுத்தி|பரிசைப் பெற)",
+        "(?:kbc|lottery)\\s+prize\\s+(?:kedaithullathu|jeeta|won)",
+        "processing\\s+fee\\s+(?:kattinal|jama\\s+kare)"
+      ],
+      "explanation": "False announcement that your phone number won ₹25 Lakhs or a luxury car in a KBC/Jio lucky draw, requiring an upfront 'processing fee' or 'tax' deposit.",
+      "advice": "Neither KBC nor Jio conducts lotteries via WhatsApp or SMS. Any 'lottery' requiring an advance fee to release funds is a certified fraud.",
+      "source": "RBI BE(A)WARE booklet (Part A: Lottery Frauds) & PIB Fact Check"
+    },
+    {
+      "id": "remote_access_apps_exfiltration",
+      "family": "remote_access_otp",
+      "name": "Remote Access App (AnyDesk/TeamViewer) or OTP Request",
+      "severity": "critical",
+      "weight": 55,
+      "languages": ["en", "hi", "hi-Latn", "ta", "ta-Latn"],
+      "patterns": [
+        "(?:install|download)\\s+(?:anydesk|teamviewer|quicksupport|rustdesk|airdroid|zoho assist)",
+        "(?:share|provide|tell|give)\\s+(?:your\\s+)?(?:9[- ]digit|code|screen share code).*?(?:anydesk|quicksupport|teamviewer)",
+        "(?:share|tell|send|read out|provide).*?(?:otp|one time password|verification code).*?(?:to|with|our).*?(?:executive|agent|officer|support)",
+        "(?:anydesk|quicksupport|teamviewer)\\s+(?:app\\s+)?(?:download|install)\\s+kare[n]?",
+        "(?:screen share|9 digit)\\s+code\\s+(?:bataye[n]?|share kare[n]?)",
+        "(?:apna|aapka)\\s+otp\\s+(?:bataye[n]?|share kare[n]?|bheje[n]?)",
+        "(?:एनीडेस्क|टीमव्यूअर|क्विकसपोर्ट).*?(?:डाउनलोड|इंस्टॉल).*?(?:करें|कोड बताएं)",
+        "(?:अपना|प्राप्त).*?ओटीपी.*?(?:साझा करें|बताएं|शेयर करें)",
+        "(?:anydesk|teamviewer|quicksupport).*?(?:செயலியைப் பதிவிறக்கம்|பதிவிறக்கம் செய்து).*?(?:கோட்|எண்ணை)",
+        "(?:உங்கள்|வந்த).*?otp.*?(?:பகிரவும்|கூறவும்|தெரிவிக்கவும்)",
+        "anydesk\\s+(?:download|install)\\s+seithu\\s+code\\s+solla",
+        "otp\\s+(?:share\\s+pannunga|solla\\s+koodathu)"
+      ],
+      "explanation": "Impersonators instruct you to download remote desktop apps (AnyDesk, TeamViewer) or share confidential OTPs, allowing them to mirror your screen and siphon funds.",
+      "advice": "NEVER download AnyDesk, QuickSupport, or TeamViewer at the instruction of an unsolicited caller or message. Genuine bank staff will NEVER ask for your OTP or remote screen access.",
+      "source": "RBI BE(A)WARE booklet (Part A: Screen-Sharing Apps) & CERT-In Advisories"
+    },
+    {
+      "id": "fake_predatory_loan_apps",
+      "family": "fake_loan_apps",
+      "name": "Instant Fake Loan App / No Documents Offer",
+      "severity": "high",
+      "weight": 50,
+      "languages": ["en", "hi", "hi-Latn", "ta", "ta-Latn"],
+      "patterns": [
+        "(?:instant|quick|pre[- ]approved)\\s+(?:personal\\s+)?loan\\s+(?:up to|of)?\\s*(?:rs\\.?|inr|₹)?\\s*[\\d,]+.*?(?:without|no)\\s+(?:cibil|documents?|paperwork|salary slip)",
+        "(?:loan\\s+approved|sanctioned).*?(?:in\\s+\\d+\\s+minutes?|instantly).*?(?:download\\s+apk|click\\s+here|apply)",
+        "(?:bina|zero)\\s+(?:document|cibil|kaagzat).*?(?:instant\\s+loan|loan\\s+approved|turant\\s+loan)",
+        "(?:turant\\s+loan|personal\\s+loan).*?(?:5\\s+minute|turant).*?(?:download\\s+app|link)",
+        "(?:बिना किसी दस्तावेज़|बिना सिबिल|जीरो डॉक्यूमेंट).*?(?:तुरंत लोन|पर्सनल लोन|लोन अप्रूव्ड)",
+        "(?:तुरंत लोन|लोन पास).*?(?:5 मिनट में|सीधे खाते में).*?(?:एपीके डाउनलोड|लिंक पर क्लिक)",
+        "(?:ஆவணங்கள் இன்றி|சிபில் ஸ்கோர் இன்றி|ஆவணம் இல்லாமல்).*?(?:உடனடி கடன்|பர்சனல் லோன்)",
+        "(?:5 நிமிடத்தில்|உடனடியாக).*?கடன்.*?பதிவிறக்கம்",
+        "bina\\s+cibil\\s+(?:loan|paayein)",
+        "aavanangal\\s+illamal\\s+udanadi\\s+loan"
+      ],
+      "explanation": "Predatory illegal lending apps lure borrowers with promises of instant loans without verification, then siphon phone contacts/photos to extort and harass.",
+      "advice": "Only take loans from RBI-registered Banks and NBFCs listed on the RBI website. Never sideload loan APK files from SMS links or third-party web pages.",
+      "source": "RBI Digital Lending Guidelines & CERT-In Digital Safety Compass"
+    },
+    {
+      "id": "fake_investment_crypto_stock_group",
+      "family": "investment_stock_tips",
+      "name": "Guaranteed Returns / Stock Tips / VIP Crypto Group",
+      "severity": "high",
+      "weight": 50,
+      "languages": ["en", "hi", "hi-Latn", "ta", "ta-Latn"],
+      "patterns": [
+        "(?:guaranteed|100%|sure shot|zero risk).*?(?:returns?|profit|daily profit).*?(?:stock|share market|crypto|forex|trading)",
+        "(?:vip|exclusive|insider).*?(?:whatsapp group|telegram group|signals?).*?(?:stock tips|multibagger|crypto|trading)",
+        "(?:earn|profit)\\s+(?:rs\\.?|inr|₹)?\\s*[\\d,]+\\s+(?:daily|every day|per day).*?(?:trading|invest|crypto)",
+        "(?:100%|guaranteed)\\s+(?:profit|return|munafa).*?(?:share market|crypto|trading)",
+        "(?:vip whatsapp group|telegram channel).*?(?:stock tips|insider trading|multibagger)",
+        "(?:शेयर बाजार|क्रिप्टो|ट्रेडिंग|स्टॉक).*?(?:100%|गारंटीड|पक्का).*?(?:मुनाफा|लाभ|रिटर्न)",
+        "(?:100%|गारंटीड|पक्का).*?(?:मुनाफा|लाभ|रिटर्न).*?(?:शेयर बाजार|क्रिप्टो|ट्रेडिंग|स्टॉक)",
+        "(?:वीआईपी व्हाट्सएप ग्रुप|टेलीग्राम ग्रुप).*?(?:स्टॉक टिप्स|इंसाइडर|ज्वाइन|जॉइन|कमाएं)",
+        "(?:பங்குச் சந்தை|கிரிப்டோ|டிரேடிங்).*?(?:100%|உத்தரவாதமான).*?(?:லாபம்|வருமானம்)",
+        "(?:100%|உத்தரவாதமான).*?(?:லாபம்|வருமானம்).*?(?:பங்குச் சந்தை|கிரிப்டோ|டிரேடிங்)",
+        "(?:விஐபி வாட்ஸ்அப் குழு|வாட்ஸ்அப் குழு).*?(?:பங்குச் சந்தை|இணையுங்கள்)",
+        "guaranteed\\s+(?:profit|returns?).*?stock\\s+tips",
+        "100%\\s+uttaravadhamaana\\s+laabam"
+      ],
+      "explanation": "Fraudulent groups promise unrealistically high, guaranteed profits with zero risk in stocks or cryptocurrencies to execute pump-and-dump or fake platform scams.",
+      "advice": "Guaranteed returns do not exist in securities or financial markets. SEBI does not allow guaranteed-return promises. Never trade on advice from random WhatsApp/Telegram groups.",
+      "source": "SEBI Investor Advisories & RBI BE(A)WARE booklet (Part B: Ponzi / MLM Schemes)"
+    },
+    {
+      "id": "authority_impersonation_trai_police_sim",
+      "family": "impersonating_authority",
+      "name": "Impersonating TRAI / Police / DoT / Gov Authority",
+      "severity": "critical",
+      "weight": 55,
+      "languages": ["en", "hi", "hi-Latn", "ta", "ta-Latn"],
+      "patterns": [
+        "(?:trai|telecom regulatory|department of telecom(?:munications)?|dot).*?(?:mobile number|sim(?:\\s*card)?|all services?).*?(?:disconnected|blocked|suspended|terminated)\\s+(?:within|in)\\s*\\d+\\s*(?:hours?|hrs?)",
+        "(?:mumbai police|delhi police|cbi|crime branch|cyber cell).*?(?:arrest warrant|fir registered|complaint filed|legal action against you)",
+        "(?:income tax department|tax refund).*?(?:refund of rs\\.?|approved).*?(?:confirm bank account|click here to claim)",
+        "(?:trai|dot).*?(?:aapka\\s+)?(?:mobile number|sim).*?(?:\\d+\\s+ghante|aaj).*?(?:band|block)",
+        "(?:police|cbi).*?(?:aapke khilaf|warrant).*?(?:case darj|arrest)",
+        "(?:ट्राई|दूरसंचार विभाग).*?(?:मोबाइल नंबर|सिम).*?(?:\\d+ घंटे में|बंद कर दिया जाएगा)",
+        "(?:मुंबई पुलिस|दिल्ली पुलिस|सीबीआई).*?(?:गिरफ्तारी वारंट|मुकदमा दर्ज|कार्रवाई)",
+        "(?:டிராய்|தொலைத்தொடர்பு ஒழுங்குமுறை ஆணையம்).*?(?:சிம் கார்டு|மொபைல் எண்).*?(?:\\d+ மணி நேரத்தில்|முடக்கப்படும்)",
+        "(?:காவல்துறை|சிபிஐ).*?(?:கைது வாரண்ட்|வழக்கு பதிவு)",
+        "trai.*?sim.*?(\\d+)\\s*(?:hours?|ghante|mani).*?block"
+      ],
+      "explanation": "Threatens immediate disconnection of your phone number by impersonating TRAI or Telecom Department, or intimidates with fake Police/CBI FIR notices.",
+      "advice": "TRAI NEVER contacts individual subscribers to disconnect numbers or verify KYC. Legitimate police never serve arrest notices or settle cases through messaging apps or calls.",
+      "source": "TRAI Public Advisory on Mobile Disconnection Threats & DoT Sanchar Saathi"
+    }
+  ],
+  "url_rules": [
+    {
+      "id": "url_shortener_detected",
+      "name": "Obfuscated URL Shortener",
+      "severity": "medium",
+      "weight": 25,
+      "pattern": "https?:\\/\\/(?:www\\.)?(?:bit\\.ly|tinyurl\\.com|t\\.ly|cutt\\.ly|is\\.gd|rb\\.gy|shorturl\\.at|tiny\\.cc|v\\.gd|ow\\.ly|buff\\.ly|rebrand\\.ly)\\/[a-zA-Z0-9_-]+",
+      "explanation": "Message uses an obfuscated URL shortener to hide the real destination website.",
+      "advice": "Do not click on shortened links from unknown senders as they frequently disguise malicious phishing or APK download sites."
+    },
+    {
+      "id": "ip_address_link",
+      "name": "Raw IP Address Link",
+      "severity": "critical",
+      "weight": 50,
+      "pattern": "https?:\\/\\/(?:\\d{1,3}\\.){3}\\d{1,3}(?::\\d+)?(?:\\/[^\\s]*)?",
+      "explanation": "Message links directly to an IP address instead of a verified, registered domain name.",
+      "advice": "Legitimate institutions and businesses never send direct IP address links to customers."
+    },
+    {
+      "id": "direct_apk_download",
+      "name": "Direct Android APK Download Link",
+      "severity": "critical",
+      "weight": 50,
+      "pattern": "https?:\\/\\/[^\\s]+\\.(?:apk)(?:\\?[^\\s]*)?|(?:download|install).*?\\.apk",
+      "explanation": "Message encourages downloading and sideloading an Android APK package directly onto your phone.",
+      "advice": "Never download or install APK files from SMS, WhatsApp, or websites. Sideloaded APKs can read your SMS, intercept banking OTPs, and steal accounts."
+    },
+    {
+      "id": "fake_gov_domain_lookalike",
+      "name": "Fake Government Portal Lookalike",
+      "severity": "critical",
+      "weight": 50,
+      "pattern": "https?:\\/\\/(?!(?:[a-zA-Z0-9-]+\\.)*(?:gov\\.in|nic\\.in|cybercrime\\.gov\\.in|sancharsaathi\\.gov\\.in|incometax\\.gov\\.in|uidai\\.gov\\.in|parivahan\\.gov\\.in))[a-zA-Z0-9-.]*(?:echallan|parivahan|pm-yojana|pmyojana|pmkisan|aadhaar|uidai|epfindia|incometax-efiling|cybercrime)[a-zA-Z0-9-.]*\\.[a-zA-Z]{2,}(?:\\/[^\\s]*)?",
+      "explanation": "Domain pretends to be an official Indian government service (e-Challan, Parivahan, PM Yojana, Aadhaar, Income Tax) but is NOT hosted on official .gov.in or .nic.in domains.",
+      "advice": "All genuine Government of India websites exclusively end with .gov.in or .nic.in. Any other domain ending (.com, .org, .top, .live) claiming to be government is fraudulent."
+    },
+    {
+      "id": "fake_bank_domain_lookalike",
+      "name": "Fake Bank Portal Lookalike",
+      "severity": "critical",
+      "weight": 50,
+      "pattern": "https?:\\/\\/(?!(?:[a-zA-Z0-9-]+\\.)*(?:onlinesbi\\.sbi|sbi\\.co\\.in|hdfcbank\\.com|icicibank\\.com|pnbindia\\.in|axisbank\\.com|bankofbaroda\\.in|kotak\\.com|canarabank\\.com))[a-zA-Z0-9-.]*(?:sbi|hdfc|icici|pnb|axis|yono|kotak)[a-zA-Z0-9-.]*(?:kyc|update|login|netbanking|portal|verification|secure|service)[a-zA-Z0-9-.]*\\.[a-zA-Z]{2,}(?:\\/[^\\s]*)?",
+      "explanation": "Domain mimics a major bank (SBI, HDFC, ICICI, YONO) paired with keywords like 'kyc', 'update', or 'login' on an unofficial address.",
+      "advice": "Never enter banking credentials or netbanking passwords on third-party links. Always type the bank URL directly or use the official mobile application."
+    },
+    {
+      "id": "suspicious_tld_link",
+      "name": "Suspicious Top-Level Domain (TLD)",
+      "severity": "medium",
+      "weight": 25,
+      "pattern": "https?:\\/\\/[a-zA-Z0-9-.]+\\.(?:top|xyz|club|work|vip|site|online|cfd|click|rest|buzz|cam|beauty|live|icu|sbs|bond)(?:\\/[^\\s]*)?",
+      "explanation": "Link uses a cheap/disposable top-level domain frequently utilized in automated phishing campaigns.",
+      "advice": "Be cautious when visiting links ending in high-risk disposable domains."
+    }
+  ],
+  "mitigation_rules": [
+    {
+      "id": "legitimate_otp_warning",
+      "name": "Legitimate Bank OTP Security Warning",
+      "pattern": "(?:do not share (?:this )?otp|never share (?:your )?(?:otp|password|pin)|bank never (?:calls|asks)|otp is confidential|valid for \\d+ mins?|do not disclose)",
+      "weight_reduction": 30,
+      "explanation": "Message contains standard banking security advisory discouraging OTP disclosure."
+    },
+    {
+      "id": "legitimate_transactional_markers",
+      "name": "Standard Bank Transaction Alert",
+      "pattern": "(?:debited by|debited from|credited to|credited with|avail(?:able)?\\s*bal(?:ance)?:?\\s*(?:inr|rs\\.?)|a\\/c\\s*(?:no\\.?)?\\s*(?:xx|\\.\\.)\\d{2,4}|if not done by you|sms block to)",
+      "weight_reduction": 30,
+      "explanation": "Standard transactional alert format typically dispatched by regulated commercial banks."
+    },
+    {
+      "id": "legitimate_ecommerce_delivery",
+      "name": "Legitimate E-Commerce / Courier Notification",
+      "pattern": "(?:out for delivery|delivered|order (?:#|no\\.?)|package has been delivered|share delivery pin.*?only when package|happy journey.*?irctc|pnr\\s*\\d{10})",
+      "weight_reduction": 35,
+      "explanation": "Standard logistical status notification from verified e-commerce or railway service."
+    },
+    {
+      "id": "legitimate_utility_receipt",
+      "name": "Legitimate Utility Payment Confirmation",
+      "pattern": "(?:thank you for (?:your )?payment of rs\\.?|bill payment of rs\\.?|payment received towards (?:electricity|water|gas)|receipt no\\.?|consumer no\\.?)",
+      "weight_reduction": 35,
+      "explanation": "Official receipt acknowledgement confirming a successfully completed utility bill payment."
+    }
+  ]
+}

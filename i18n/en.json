@@ -1,0 +1,40 @@
+{
+  "app_name": "Kavach",
+  "tagline": "Open-Source Scam Message Checker for India",
+  "privacy_badge": "100% Client-Side • Zero Data Leaves Your Device • Works Offline",
+  "input_placeholder": "Paste suspicious SMS, WhatsApp text, email, UPI request, or link here...",
+  "btn_analyze": "Analyze Message",
+  "btn_clear": "Clear",
+  "btn_paste": "Paste",
+  "btn_copy_report": "Copy Report",
+  "btn_copied": "Report Copied!",
+  "sample_title": "Try a Real-World Sample:",
+  "samples": {
+    "electricity": "⚡ Electricity Disconnection",
+    "digital_arrest": "👮 Digital Arrest / Courier",
+    "kyc": "🏦 Fake Bank KYC Block",
+    "upi": "💳 UPI PIN To Receive",
+    "job": "💼 YouTube / Map Task Job",
+    "legit_otp": "🛡️ Real Bank OTP"
+  },
+  "results_title": "Analysis Verdict",
+  "risk_score": "Risk Score",
+  "matched_text": "Highlighted Suspicious Signs",
+  "indicators_title": "Detected Indicators & Explanations",
+  "actions_title": "Recommended Next Steps",
+  "emergency_title": "Emergency Helplines & Official Portals",
+  "no_text_alert": "Please paste or type a message to check.",
+  "clean_verdict": {
+    "title": "No Known Scam Signs Detected",
+    "desc": "This message does not exhibit known scam markers and resembles standard legitimate communication. However, always remain vigilant with personal credentials."
+  },
+  "caution_verdict": {
+    "title": "Be Careful (Potential Suspicion)",
+    "desc": "This message contains ambiguous or low-confidence markers (such as an unknown link or generic urgency). Proceed with caution and verify independently."
+  },
+  "scam_verdict": {
+    "title": "Likely Scam (High Risk)",
+    "desc": "Critical scam patterns flagged! Do NOT click links, install apps, transfer money, or call numbers from this message."
+  },
+  "disclaimer": "Disclaimer: Kavach analyzes messages strictly on your device using heuristics published by RBI, CERT-In, I4C, NPCI, and DoT. It is an informational tool and does not constitute legal certification."
+}
